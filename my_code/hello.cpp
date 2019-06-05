@@ -4,6 +4,6 @@
 using namespace std;
 
 int sayHello() {
-	cout << "Hello World! This is a test with Xcode and its built-in integreation with Github!" << endl;
+	cout << "Hello World! This is a test with Xcode and its built-in integration with Github!" << endl;
 	return 0;
 }
