@@ -39,6 +39,7 @@ void print_vector(const vector<int>& v){
 	int i = 0;
 	for (i; i < v.size(); i++){
 		std::cout << v[i] << ' ';
+	}
 }
 
 
