@@ -39,8 +39,6 @@ void print_vector(const vector<int>& v){
 	int i = 0;
 	for (i; i < v.size(); i++){
 		std::cout << v[i] << ' ';
-	}
-	cout << endl;
 }
 
 
@@ -118,5 +116,4 @@ void pull_apart_string(std::string s) {
 	int i = 0;
 	for (i; i<s.size(); i++)
 		cout << s[i] << ' ';
-	cout << endl;
 }
