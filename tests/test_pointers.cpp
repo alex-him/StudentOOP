@@ -21,7 +21,7 @@ int main() {
     cout << "After ref, n = " << n << endl;
     assert(n == 2);
 
-    // now assign TAs to students
+    //now assign TAs to students
     vector<Student*> students;
     Student* mary = new Student("mary");
     Student* gordon = new Student("gordon");
