@@ -118,3 +118,4 @@ void pull_apart_string(std::string s) {
 	for (i; i<s.size(); i++)
 		cout << s[i] << ' ';
 }
+

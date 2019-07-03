@@ -6,7 +6,11 @@
 using namespace std;
 
 bool operator== (const Complex& c1, const Complex& c2) {
-    return true;  // temp!
+    return ((c1.get_imag() == c2.get_imag()) && (c1.get_real() == c2.get_real()));
+}
+
+bool operator!= (const Complex& c1, const Complex& c2){
+    return ((c1.get_imag() != c2.get_imag()) && (c1.get_real() != c2.get_real()));
 }
 
 ostream& operator<< (ostream& os, const Complex& c) {
@@ -16,6 +20,8 @@ ostream& operator<< (ostream& os, const Complex& c) {
      * number of decimal places, while `showpos` turns on the plus
      * sign for positive numbers.
      * */
+    os << setprecision(10) << c.real << showpos
+    << c.imag << "i" << noshowpos << endl;
     return os;
 }
 
@@ -24,22 +30,64 @@ ostream& operator<< (ostream& os, const Complex& c) {
  * Read a `Complex` number from an input stream.
  * */
 istream& operator>> (istream& is, Complex& c) {
+    is >> c.real >> c.imag;
     return is;
 }
 
-Complex::Complex(double real, double imag) {}
+
+Complex::Complex(double real, double imag)
+: real{real}, imag{imag} {}
+
 
 Complex::operator bool() const {
-    return true;
+    return ((real != 0) || (imag != 0));
 }
 
 Complex& Complex::operator++() {
-    return *this;
+    ++real;
+    return (*this);
 }
 
 Complex Complex::operator++(int dummy) {
-    return *this;
+    Complex temp(*this);
+    real++;
+    return temp;
 }
+
+Complex& Complex::operator--() {
+    --real;
+    return (*this);
+}
+
+Complex Complex::operator--(int dummy) {
+    Complex temp(*this);
+    real--;
+    return temp;
+}
+
+Complex operator+(const Complex& c1, const Complex& c2){
+    Complex sum{c1.get_real() + c2.get_real(), c1.get_imag() + c2.get_imag()};
+    return sum;
+}
+
+Complex operator-(const Complex& c1, const Complex& c2){
+    Complex sub = Complex(c1.get_real() - c2.get_real(), c1.get_imag() - c2.get_imag());
+    return sub;
+}
+
+Complex Complex::operator*(const int i){
+    real *= i;
+    imag *= i;
+    return (*this);
+}
+
+Complex Complex::operator-=(const Complex& c){
+    real -= c.get_real();
+    imag -= c.get_imag();
+    return (*this);
+}
+
+
 
 double Complex::get_real() const {
     return real;
@@ -47,8 +95,4 @@ double Complex::get_real() const {
 
 double Complex::get_imag() const {
     return imag;
-}
-
-Complex Complex::operator*(const int i) {
-    return *this;
 }

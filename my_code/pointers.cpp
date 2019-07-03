@@ -90,3 +90,5 @@ void printTAs(vector<Student*>& students) {
 		string stu_name = student_ref->name;
 		cout << stu_name << endl ; //<< ta_name;
 } }
+
+
