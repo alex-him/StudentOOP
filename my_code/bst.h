@@ -1,48 +1,38 @@
 #include <iostream>
 
 void indent(int level) {
-    // indent more at each level:
+    
     for (int i = 0; i < level; i++) std::cout << "  ";
 }
 
 template <typename T>
 class Bst {
     
-    friend void print_bst(const Bst<T>& bst, int level=0) //you are calling the const reference bst, initially starting at level 0
+    friend void print_bst(const Bst<T>& bst, int level=0) 
     {
-        indent(level); //this places spaces so that it's easier to see our tree
-        level++; //the level increments at each level
-        std::cout << "data --> " << bst.data << std::endl; // the data will be called by calling std.data
-        indent(level + 1); //why are we incrementing +1 here? --> A: We are showing the next level of the tree L and R sides
+        indent(level); 
+        level++;
+        std::cout << "data --> " << bst.data << std::endl; 
+        indent(level + 1); 
         std::cout << "left: ";
-        if (!bst.left) std::cout << "nullptr"<< std::endl; //if there is nothing to the left then output nullptr
+        if (!bst.left) std::cout << "nullptr"<< std::endl; 
         else {
             std::cout << std::endl;
-            indent(level); //indent the level
-            print_bst(*bst.left,level); //recursively call the bst to print.
+            indent(level); 
+            print_bst(*bst.left,level); 
         }
         std::cout << "right: ";
-        if (!bst.right) std::cout << "nullptr" <<std::endl; //you are going to output the nullptr if there is nothing to the right
+        if (!bst.right) std::cout << "nullptr" <<std::endl; 
         else {
             std::cout << std::endl;
-            indent(level); //indent the level
-            print_bst(*bst.right,level); //recursively call the level.
+            indent(level); 
+            print_bst(*bst.right,level); 
         }
         std::cout << std::endl;
     }
-    /*
-    friend T min(Bst<T>& bst)
-    {
-        if (!bst.left) {
-            return bst.data;
-        }
-        else {
-            return min(*bst.left);
-        }
-    }
-    */
+   
     public:
-    Bst(T d, Bst* p=nullptr,Bst* l=nullptr,Bst* r=nullptr) : data(d),parent(p),left(l),right(r) {} //constructor
+    Bst(T d, Bst* p=nullptr,Bst* l=nullptr,Bst* r=nullptr) : data(d),parent(p),left(l),right(r) {} 
     
     T min() {
         if (!left) {
@@ -63,7 +53,7 @@ class Bst {
     }
     
     Bst<T>* search(T d) {
-        if (d == data ) return this; //note
+        if (d == data ) return this;
         else if (d < data) {
             if (!left) {
                 return nullptr;
