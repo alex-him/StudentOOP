@@ -108,3 +108,4 @@ int MyVec::operator[](int i) const {
 
 int& MyVec::operator[](int i) {
     return data[i];
+}
